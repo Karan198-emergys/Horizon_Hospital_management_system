@@ -1,0 +1,16 @@
+.navbarContainer nav {
+  display: flex;
+  height: 4rem;
+  width: 100%;
+  background: #009689;
+  font-size: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem 0.5rem 3rem;
+}
+.navbarContainer nav .logo {
+  display: flex;
+  align-items: center;
+  color: #101828;
+  letter-spacing: 2px;
+}/*# sourceMappingURL=Navbar.module.css.map */

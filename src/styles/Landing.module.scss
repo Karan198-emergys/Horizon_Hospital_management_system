@@ -1,0 +1,36 @@
+:root {
+  --BeforeBorder-Color: #00d5be;
+  --primary-Color: #009689;
+  --BeforeBg-Color: #00d5be;
+  --primary-color: #009689;
+  --text-Color: #101828;
+  --hoverText-color: white;
+  --background-color: #f9fafb;
+  --secondary-color: #05df72;
+}
+
+.landingPage {
+  height: 100%;
+  width: 100%;
+  background: var(--background-color);
+
+  .authenticationButtons {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    padding: 0 0 0 2.5rem;
+    align-items: center;
+    gap: 1.5rem;
+    .loginButton {
+      height: 100%;
+      width: 50%;
+
+      .loginLinkButton {
+        font-size: 1.25rem;
+        border: var(--secondary-color);
+        color: var(--text-Color);
+        cursor: pointer;
+      }
+    }
+  }
+}

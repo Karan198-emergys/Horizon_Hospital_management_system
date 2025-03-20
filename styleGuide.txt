@@ -1,0 +1,4 @@
+• Primary: #0F766E (Tailwind: teal-700)-> Buttons, Highlights
+• Secondary: #84CC16 (Tailwind: lime-500) -> Accent, Notifications
+• Background: #E5E7EB (Tailwind: c) - Light Gray
+• Text: #374151 (Tailwind: gray-700) -> Soft Black
