@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import linkModuleCss from "./Link.module.scss"
 
 const CustomLink = ({ children, to, className }) => {
   return (
-    <Link className={`border-[0.2rem] rounded-4xl ${className}`} to={to}>
+    <Link className={`${linkModuleCss.customLink} ${className}`} to={to}>
       {children}
     </Link>
   );

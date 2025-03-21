@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NavbarModuleCss } from "../index";
+import NavbarModuleCss from "./Navbar.module.scss";
 
 const Navbar = ({ children }) => {
   return (

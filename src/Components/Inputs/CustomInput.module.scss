@@ -1,0 +1,28 @@
+.inputContainer {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+
+  .inputSymbol {
+    font-size: 1.87rem;
+    padding: 0 0 0 0.5rem;
+    svg {
+      path {
+        fill: var(--primary-color);
+      }
+    }
+  }
+
+  input {
+    width: 87%;
+    font-size: 1.25rem;
+    outline: none;
+
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+  }
+}

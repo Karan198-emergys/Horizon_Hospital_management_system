@@ -1,7 +1,7 @@
 import React from "react";
 import { CustomLinks } from "../Components/index";
 import Navbar from "../Components/navbar/Navbar";
-import { LandingModule } from "../styles/indexStyle";
+import LandingModule from "../styles/Landing.module.scss";
 
 const LandingPage = () => {
   return (
@@ -10,12 +10,12 @@ const LandingPage = () => {
         <div className={LandingModule.authenticationButtons}>
           <div className={LandingModule.loginButton}>
             <CustomLinks className={LandingModule.loginLinkButton} to="/login">
-              Logins
+              Login
             </CustomLinks>
           </div>
-          <div>
+          <div className={LandingModule.registerButton}>
             <CustomLinks
-              className="text-xl bg-green-400 border-0 border-green-400 text-gray-800 cursor-pointer"
+              className={LandingModule.registerLinkButton}
               to="/registration"
             >
               Sign Up

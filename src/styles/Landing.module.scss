@@ -1,14 +1,3 @@
-:root {
-  --BeforeBorder-Color: #00d5be;
-  --primary-Color: #009689;
-  --BeforeBg-Color: #00d5be;
-  --primary-color: #009689;
-  --text-Color: #101828;
-  --hoverText-color: white;
-  --background-color: #f9fafb;
-  --secondary-color: #05df72;
-}
-
 .landingPage {
   height: 100%;
   width: 100%;
@@ -18,18 +7,43 @@
     height: 100%;
     width: 20%;
     display: flex;
-    padding: 0 0 0 2.5rem;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 1rem;
     .loginButton {
+      display: flex;
+      align-items: center;
       height: 100%;
       width: 50%;
-
       .loginLinkButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 1.25rem;
-        border: var(--secondary-color);
-        color: var(--text-Color);
-        cursor: pointer;
+        height: 100%;
+        width: 100%;
+
+        &:hover {
+          background-color: var(--secondary-color);
+        }
+      }
+    }
+    .registerButton {
+      height: 100%;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      .registerLinkButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 1.25rem;
+        background-color: var();
+
+        &:hover {
+          background-color: #05df72;
+        }
       }
     }
   }
