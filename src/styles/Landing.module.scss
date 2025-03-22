@@ -39,12 +39,20 @@
         align-items: center;
         width: 100%;
         font-size: 1.25rem;
+<<<<<<< Updated upstream
         border: 0.1rem solid var(--secondary-color);
         background-color: var(--secondary-color);
         color: var(--hoverText-color);
 
         &:hover {
           background-color: none;
+=======
+        background-color: none;
+        border: 2px solid var(--secondary-color);
+
+        &:hover {
+          background-color: var(--secondary-color);
+>>>>>>> Stashed changes
         }
       }
     }
