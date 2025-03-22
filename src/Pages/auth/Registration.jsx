@@ -2,6 +2,7 @@ import { faEnvelope, faLock, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
+import { authenticateScreenImage } from "src/Components";
 
 const Registration = () => {
   return (
@@ -99,7 +100,9 @@ const Registration = () => {
           </form>
         </div>
       </div>
-      <div className=" w-1/2">Registration Image</div>
+      <div className=" w-1/2">
+        <img src={authenticateScreenImage} alt="" />
+      </div>
     </div>
   );
 };

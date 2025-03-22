@@ -4,6 +4,8 @@ import LandingPage from "./Pages/LandingPage";
 import LoginScreen from "./Pages/LoginScreen";
 import RegistrationScreen from "./Pages/RegistrationScreen";
 import "src/styles/styles.scss";
+import PatientDashBoard from "./Pages/PatientDashBoard";
+import PatientLandingPage from "./Pages/PatientLandingPage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
   {
     path: "/registration",
     element: <RegistrationScreen />,
+  },
+  {
+    path: "*",
+    element: <div>Page not found</div>,
+  },
+  {
+    path: "/patientDashboard",
+    element: <PatientLandingPage />,
   },
 ]);
 

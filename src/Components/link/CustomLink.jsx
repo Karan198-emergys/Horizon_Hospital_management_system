@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import linkModuleCss from "./Link.module.scss"
+import linkModuleCss from "./Link.module.scss";
 
 const CustomLink = ({ children, to, className }) => {
   return (

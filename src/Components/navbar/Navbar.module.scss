@@ -1,16 +1,9 @@
-$BeforeBorder-Color: #00d5be;
-$AfterBorder-Color: #009689;
-$BeforeBg-Color: #00d5be;
-$AfterBg-color: #009689;
-$text-Color: #101828;
-$hoverText-color: white;
-
 .navbarContainer {
   nav {
     display: flex;
     height: 4rem;
     width: 100%;
-    background: $AfterBg-color;
+    background: var(--primary-color);
     font-size: 1.5rem;
     justify-content: space-between;
     align-items: center;
@@ -19,7 +12,7 @@ $hoverText-color: white;
     .logo {
       display: flex;
       align-items: center;
-      color: $text-Color;
+      color: var(--text-Color);
       letter-spacing: 2px;
     }
   }

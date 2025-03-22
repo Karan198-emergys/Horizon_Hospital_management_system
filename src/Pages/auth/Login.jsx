@@ -19,7 +19,7 @@ const Login = () => {
   return (
     <div className={LoginModuleCss.loginDashBoard}>
       <div className={LoginModuleCss.loginForm}>
-        <div className=" formSection w-full pl-24 flex flex-col justify-center gap-10">
+        <div className={LoginModuleCss.formSection}>
           <div className="formHeading text-4xl text-gray-950 cursor-context-menu">
             Welcome, <br />
             Please Authorize
@@ -29,6 +29,8 @@ const Login = () => {
               type="email"
               icon={faEnvelope}
               placeholder="Enter your email"
+              register={register}
+              errors={errors}
             />
             <CustomsInput
               type="password"

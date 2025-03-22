@@ -39,10 +39,12 @@
         align-items: center;
         width: 100%;
         font-size: 1.25rem;
-        background-color: var();
+        border: 0.1rem solid var(--secondary-color);
+        background-color: var(--secondary-color);
+        color: var(--hoverText-color);
 
         &:hover {
-          background-color: #05df72;
+          background-color: none;
         }
       }
     }

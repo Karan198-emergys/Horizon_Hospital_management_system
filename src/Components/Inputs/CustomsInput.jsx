@@ -11,20 +11,25 @@ const CustomsInput = ({
   type,
   icon,
   placeholder,
+  register,
+  error,
 }) => {
   return (
-    <div className={` ${inputStyle.inputContainer} ${inputMainCLassName}`}>
-      {icon && (
-        <label htmlFor={id} className={inputStyle.inputSymbol}>
-          <FontAwesomeIcon icon={icon} />
-        </label>
-      )}
-      <input
-        type={type}
-        id={id}
-        className={`${className}`}
-        placeholder={placeholder}
-      />
+    <div>
+      <div className={` ${inputStyle.inputContainer} ${inputMainCLassName}`}>
+        {icon && (
+          <label htmlFor={id} className={inputStyle.inputSymbol}>
+            <FontAwesomeIcon icon={icon} />
+          </label>
+        )}
+        <input
+          type={type}
+          id={id}
+          className={`${className}`}
+          placeholder={placeholder}
+          {...register}
+        />
+      </div>
     </div>
   );
 };
