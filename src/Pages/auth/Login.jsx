@@ -22,14 +22,13 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const { loading } = useSelector((state) => state.authentication);
+  const { loading  , isAdmin} = useSelector((state) => state.authentication);
 
-  const onSubmit = async(data) => {
-
+  const onSubmit = async (data) => {
     try {
-      if(data && !loading){
+      if (data && !loading) {
         await dispatch(loginUser(data));
-        reset({ email: data.email, password: data.password });
+      (isAdmin ? toNavigate("/dashboard/adminDashboard") : toNavigate("/dashboard/patientDashboard"))
       }
     } catch (error) {
       toast.error(error.message);

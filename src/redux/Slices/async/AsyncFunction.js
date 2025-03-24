@@ -25,7 +25,6 @@ export const registerUser = createAsyncThunk(
         "/user/register",
         registerCredential
       );
-      toast.success("Registration Successful");
       return response.data;
     } catch (error) {
       toast.error(error.response.data.message);

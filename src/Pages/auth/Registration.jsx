@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faPhone } from "@fortawesome/free-solid-svg-icons";
 import registerImage from "src/assets/loginImage.png";
 import { toast } from "react-toastify";
+import { registerUser } from "src/redux/Slices/async/AsyncFunction";
+import { useDispatch } from "react-redux";
 
 const Registration = () => {
   const {
@@ -18,12 +20,25 @@ const Registration = () => {
 
   const toNavigate = useNavigate();
 
-  const password = watch("password");
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    toast.success("Your are registered successfully , please Login now");
-    toNavigate("/login");
+  const password = watch("user_password");
+
+  const onSubmit = async (data) => {
+    const payload = {
+      last_name: data.last_name,
+      first_name: data.first_name,
+      email: data.email,
+      user_password: data.user_password,
+      mobile_number: data.mobile_number,
+    };
+
+    try {
+      await dispatch(registerUser(payload));
+      toast.success("User registered successfully");
+    } catch (error) {
+      console.error("Error registering user", error);
+    }
   };
 
   return (
@@ -118,19 +133,14 @@ const Registration = () => {
                 icon={faLock}
                 placeholder="Password"
                 type="password"
-                inputName="password"
+                inputName="user_password"
                 register={register}
                 errors={errors}
                 validation={{
                   required: "Please enter the password",
-                  minLength: {
-                    value: 8,
-                    message: "8 character's allowed",
-                  },
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message: "Invalid Password",
+                  max: {
+                    value: 4,
+                    message: "4 character's allowed",
                   },
                 }}
               />
@@ -145,6 +155,10 @@ const Registration = () => {
                 errors={errors}
                 validation={{
                   required: "Please enter the password",
+                  max: {
+                    value: 4,
+                    message: "4 character's allowed",
+                  },
                   validate: (value) =>
                     value === password || "Passwords do not match",
                 }}

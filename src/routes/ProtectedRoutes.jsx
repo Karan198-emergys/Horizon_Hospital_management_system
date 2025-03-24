@@ -4,9 +4,19 @@ import { useSelector } from "react-redux";
 const ProtectedRoutes = () => {
   const toLocation = useLocation();
 
-  const { token } = useSelector((state) => state.authentication);
+  const { token, isAuthenticated, isAdmin } = useSelector(
+    (state) => state.authentication
+  );
 
-  return token ? <Outlet /> : toLocation("/login");
+  if (!token && isAuthenticated) {
+    toLocation("/login");
+  }
+  if (token && isAdmin) {
+    toLocation("/adminDashboard");
+  }
+  if (token && !isAdmin) {
+    toLocation("/patientDashboard");
+  }
 };
 
 export default ProtectedRoutes;

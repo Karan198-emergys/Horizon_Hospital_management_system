@@ -5,6 +5,8 @@ import LoginScreen from "./Pages/LoginScreen";
 import RegistrationScreen from "./Pages/RegistrationScreen";
 import "src/styles/styles.scss";
 import PatientLandingPage from "./Pages/PatientLandingPage";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
+import { Children } from "react";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,23 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <div>Page not found</div>,
+  },
+  {
+    path: "/dashboard",
+    element: <ProtectedRoutes />,
+    children: [
+      {
+        path: "/dashboard/patientDashboard",
+        element: <PatientLandingPage />,
+        // children:[
+
+        // ]
+      },
+      {
+        path: "/dashboard/adminDashboard",
+        element: <div>Admin Dashboard</div>,
+      },
+    ],
   },
 ]);
 

@@ -33,8 +33,9 @@ export const AuthenticationSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state) => {
         state.loading = false;
-        toast.success("registered Successfully");
         window.location.href = "/login";
+        console.log(state);
+        toast.success("Registration Successful");
       })
       .addCase(registerUser.rejected, (state) => {
         state.loading = "false";
@@ -54,7 +55,7 @@ export const AuthenticationSlice = createSlice({
         state.isAdmin = action.payload.isAdmin;
         if (state.isAdmin) {
           state.role = "admin";
-          localStorage.setItem("isAdmin", true);
+          localStorage.setItem("isAdmin", 1);
         } else {
           state.role = "user";
           localStorage.setItem("isAdmin", 0);
