@@ -1,8 +1,7 @@
-import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import inputStyle from "../Inputs/CustomInput.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icon } from "@fortawesome/fontawesome-svg-core";
 
 const CustomsInput = ({
   inputMainCLassName,
@@ -12,11 +11,20 @@ const CustomsInput = ({
   icon,
   placeholder,
   register,
-  error,
+  errors,
+  inputName,
+  validation
 }) => {
   return (
     <div>
-      <div className={` ${inputStyle.inputContainer} ${inputMainCLassName}`}>
+        {
+          errors?.[inputName] && (
+            <span className={inputStyle.inputError}>
+              {errors?.[inputName].message}
+            </span>
+          ) 
+        }
+      <div className={clsx(inputStyle.inputContainer, inputMainCLassName)}>
         {icon && (
           <label htmlFor={id} className={inputStyle.inputSymbol}>
             <FontAwesomeIcon icon={icon} />
@@ -27,7 +35,7 @@ const CustomsInput = ({
           id={id}
           className={`${className}`}
           placeholder={placeholder}
-          {...register}
+          {...( register ? register(inputName , validation): {})}
         />
       </div>
     </div>
@@ -35,12 +43,16 @@ const CustomsInput = ({
 };
 
 CustomsInput.propTypes = {
-  inputMainCLassName: PropTypes.node,
-  className: PropTypes.node,
-  id: PropTypes.node,
-  type: PropTypes.node,
-  icon: PropTypes.node,
-  placeholder: PropTypes.node,
+  inputMainCLassName: PropTypes.string,
+  className: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  icon: PropTypes.object,
+  placeholder: PropTypes.string,
+  register: PropTypes.func,
+  error: PropTypes.object,
+  inputName: PropTypes.string.isRequired,
+  validation: PropTypes.object,
 };
 
 export default CustomsInput;

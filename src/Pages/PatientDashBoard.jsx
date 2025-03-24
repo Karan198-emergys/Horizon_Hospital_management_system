@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PatientScreenModule from "src/styles/patientDashboard.module.scss";
 
 
 const PatientDashBoard = (props) => {
   return (
-    <div>
+    <div className={PatientScreenModule.patientScreen }>
       <h1>Patient Dashboard</h1>
       <p>Welcome, !</p>
       <p>Your patient ID is: </p>

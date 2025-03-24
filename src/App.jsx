@@ -3,11 +3,8 @@ import "../src/styles/styles.scss";
 import LandingPage from "./Pages/LandingPage";
 import LoginScreen from "./Pages/LoginScreen";
 import RegistrationScreen from "./Pages/RegistrationScreen";
-<<<<<<< Updated upstream
 import "src/styles/styles.scss";
 import PatientLandingPage from "./Pages/PatientLandingPage";
-=======
->>>>>>> Stashed changes
 
 const router = createBrowserRouter([
   {

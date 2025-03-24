@@ -1,20 +1,29 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { LoginModuleCss } from "../../Components/index";
-import { authenticateScreenImage } from "../../Components/index";
+import { Link, useNavigate } from "react-router-dom";
 import CustomsInput from "src/Components/Inputs/CustomsInput";
+import { authenticateScreenImage, LoginModuleCss } from "../../Components/index";
 
 const Login = () => {
   const {
     register,
     handleSubmit,
-    trigger,
-    getValues,
     formState: { errors },
+    reset
   } = useForm();
+
+  const toNavigate = useNavigate()
+
+
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+    reset({
+      email:data.email,
+      password:data.password
+    })
+    toNavigate("/patientDashboard")
+  };
+  
 
   return (
     <div className={LoginModuleCss.loginDashBoard}>
@@ -24,18 +33,32 @@ const Login = () => {
             Welcome, <br />
             Please Authorize
           </div>
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <CustomsInput
               type="email"
               icon={faEnvelope}
               placeholder="Enter your email"
               register={register}
               errors={errors}
+              inputName="email"
+              validation={{
+                required: "Please enter the email",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Please enter a valid email",
+                },
+              }}
             />
             <CustomsInput
               type="password"
               icon={faLock}
               placeholder="Enter your password"
+              register={register}
+              errors={errors}
+              inputName="password"
+              validation={{
+                required:"Please enter the password"
+              }}
             />
             <div className="toRegister">
               Don't have account ?{" "}

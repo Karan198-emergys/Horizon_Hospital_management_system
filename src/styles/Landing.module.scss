@@ -14,7 +14,7 @@
       display: flex;
       align-items: center;
       height: 100%;
-      width: 50%;
+      width: 40%;
       .loginLinkButton {
         display: flex;
         justify-content: center;
@@ -25,12 +25,13 @@
 
         &:hover {
           background-color: var(--secondary-color);
+          color: var(--text-hover);
         }
       }
     }
     .registerButton {
       height: 100%;
-      width: 50%;
+      width: 40%;
       display: flex;
       align-items: center;
       .registerLinkButton {
@@ -39,22 +40,13 @@
         align-items: center;
         width: 100%;
         font-size: 1.25rem;
-<<<<<<< Updated upstream
-        border: 0.1rem solid var(--secondary-color);
         background-color: var(--secondary-color);
-        color: var(--hoverText-color);
+        color: var(--text-hover);
 
         &:hover {
-          background-color: none;
-=======
-        background-color: none;
         border: 2px solid var(--secondary-color);
-
-        &:hover {
-          background-color: var(--secondary-color);
->>>>>>> Stashed changes
-        }
       }
     }
   }
+}
 }

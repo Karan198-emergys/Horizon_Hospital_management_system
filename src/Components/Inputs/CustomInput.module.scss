@@ -1,3 +1,13 @@
+.inputError {
+  color: #ff0048;
+  width: 78%;
+  font-weight: 600;
+  padding:0 0 0.1rem 0 ;
+  display: flex;
+  justify-content:end;
+  align-items:center;
+}
+
 .inputContainer {
   display: flex;
   width: 80%;
