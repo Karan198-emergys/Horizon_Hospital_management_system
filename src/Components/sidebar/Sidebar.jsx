@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import sidebarModuleCss from "../sidebar/sidebarStyle.module.scss";
 
-const  Sidebar = ({ className }) => {
+const Sidebar = ({ className, children }) => {
   return (
     <div className={`${sidebarModuleCss.sidebarContainer} ${className}`}>
-      this is the sidebar
+      {children}
     </div>
   );
 };

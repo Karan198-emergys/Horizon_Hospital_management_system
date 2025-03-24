@@ -23,10 +23,6 @@ const router = createBrowserRouter([
     path: "*",
     element: <div>Page not found</div>,
   },
-  {
-    path: "/patientDashboard",
-    element: <PatientLandingPage />,
-  },
 ]);
 
 const App = () => {

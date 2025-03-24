@@ -1,55 +1,110 @@
 .registrationDashboard {
-    height: 80vh;
-    width: 75%;
+  height: 84vh;
+  width: 75%;
+  display: flex;
+  margin: auto;
+  border: 0;
+  border-radius: 0.5rem;
+  background: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  .registerForm {
+    height: 100%;
+    width: 50%;
     display: flex;
-    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
     border: 0;
     border-radius: 0.5rem;
-    background: white;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 
-    .registerForm {
-        height: 100%;
-        width: 50%;
+    .formSection {
+      width: 80%;
+      padding: 0 0 0 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+
+      .formHeading {
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      form {
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 1rem;
-        border: 0;
-        border-radius: 0.5rem;
+        width: 100%;
+        .name {
+          width: 100%;
+          height: 3rem;
+          display: flex;
+          gap: 1rem;
 
-        .formSection {
-            width: 100%;
-            padding: 0 0 0 6rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 2.5rem;
-            .formHeading {
-                font-size:2rem;
-                font-weight: 500;
-            }
-
-            form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            
-            .name  {
-                width: 80%;
-                display: flex;
-                gap: 0.8rem;
-
-                .firstName {
-                    width: 50%;
-                }
-                .lastName {
-                    width: 50%;
-                }
-            }
-            
-            }
+          .firstName,
+          .lastName {
+            width: calc(50% - 0.5rem);
+            height: 3rem;
+          }
         }
-    }
 
+        .registerEmail,
+        .registerPhoneNumber,
+        .registerPassword,
+        .confirmPassword {
+          width: 100%;
+          height: 3rem;
+        }
+
+        .registerPhoneNumber {
+          position: relative;
+        }
+
+        .registerAndLoginLink {
+          width: 100%;
+          display: flex;
+          gap: 0.3rem;
+          .registerButton {
+            height: 3rem;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            .signupButton {
+              cursor: pointer;
+              color: var(--text-Color);
+              font-size: 1.25rem;
+              font-weight: 500;
+
+              &:hover {
+                background: var(--primary-color-hover);
+              }
+            }
+          }
+          .alreadyAccount {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  .registerImage {
+    padding: 0.8rem;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 }

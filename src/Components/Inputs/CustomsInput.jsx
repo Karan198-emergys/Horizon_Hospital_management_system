@@ -13,17 +13,15 @@ const CustomsInput = ({
   register,
   errors,
   inputName,
-  validation
+  validation,
 }) => {
   return (
-    <div>
-        {
-          errors?.[inputName] && (
-            <span className={inputStyle.inputError}>
-              {errors?.[inputName].message}
-            </span>
-          ) 
-        }
+    <>
+      {errors?.[inputName] && (
+        <span className={inputStyle.inputError}>
+          {errors?.[inputName].message}
+        </span>
+      )}
       <div className={clsx(inputStyle.inputContainer, inputMainCLassName)}>
         {icon && (
           <label htmlFor={id} className={inputStyle.inputSymbol}>
@@ -35,10 +33,10 @@ const CustomsInput = ({
           id={id}
           className={`${className}`}
           placeholder={placeholder}
-          {...( register ? register(inputName , validation): {})}
+          {...(register ? register(inputName, validation) : {})}
         />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,11 +1,7 @@
-.customButton {
-    width: 100%;
+  button {
     height: 100%;
-
-    button {
-        height: 100%;
-        width: 100%;
-        border: 2px solid var(--before-color);
-        border-radius: 4rem;
-    }
-}
+    width: 100%;
+    border: 2px solid var(--before-color);
+    border-radius: 4rem;
+    cursor: pointer;
+  }

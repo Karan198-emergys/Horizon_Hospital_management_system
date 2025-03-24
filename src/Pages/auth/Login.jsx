@@ -2,28 +2,39 @@ import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import CustomsInput from "src/Components/Inputs/CustomsInput";
-import { authenticateScreenImage, LoginModuleCss } from "../../Components/index";
+import {
+  authenticateScreenImage,
+  LoginModuleCss,
+} from "../../Components/index";
+import { toast } from "react-toastify";
+import { loginUser } from "src/redux/Slices/async/AsyncFunction";
+import { useSelector, useDispatch } from "react-redux";
 
 const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
-  const toNavigate = useNavigate()
+  const toNavigate = useNavigate();
 
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    console.log("Form submitted:", data);
-    reset({
-      email:data.email,
-      password:data.password
-    })
-    toNavigate("/patientDashboard")
+  const { loading } = useSelector((state) => state.authentication);
+
+  const onSubmit = async(data) => {
+
+    try {
+      if(data && !loading){
+        await dispatch(loginUser(data));
+        reset({ email: data.email, password: data.password });
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
-  
 
   return (
     <div className={LoginModuleCss.loginDashBoard}>
@@ -57,7 +68,7 @@ const Login = () => {
               errors={errors}
               inputName="password"
               validation={{
-                required:"Please enter the password"
+                required: "Please enter the password",
               }}
             />
             <div className="toRegister">
@@ -67,7 +78,7 @@ const Login = () => {
               </Link>
             </div>
             <div className={LoginModuleCss.loginButton}>
-              <button type="submit">Log In</button>
+              <button type="submit">{loading ? "logging..." : "Log In"}</button>
             </div>
           </form>
         </div>

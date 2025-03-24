@@ -1,21 +1,29 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomsInput from "src/Components/Inputs/CustomsInput";
 import registerStyleModule from "src/styles/register.module.scss";
 import Button from "../../Components/button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLock, faPhone } from "@fortawesome/free-solid-svg-icons";
+import registerImage from "src/assets/loginImage.png";
+import { toast } from "react-toastify";
 
 const Registration = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
   const toNavigate = useNavigate();
 
-  const onSubmit = (data) => {  
-    console.log(data); 
-    toNavigate("/login");  
+  const password = watch("password");
+
+  const onSubmit = (data) => {
+    console.log(data);
+    toast.success("Your are registered successfully , please Login now");
+    toNavigate("/login");
   };
 
   return (
@@ -27,24 +35,24 @@ const Registration = () => {
             Please register.
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)}>  
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className={registerStyleModule.name}>
               <div className={registerStyleModule.firstName}>
                 <CustomsInput
                   placeholder="First name"
                   type="text"
-                  inputName="firstname"
+                  inputName="first_name"
                   register={register}
                   errors={errors}
                   validation={{
-                    required: "Please enter the name",
+                    required: "name required",
                     max: {
                       value: 8,
                       message: "8 characters allowed",
                     },
                     pattern: {
                       value: /^[A-Za-z ]{1,7}$/,
-                      message: "Please enter a valid name",
+                      message: "Invalid name",
                     },
                   }}
                 />
@@ -54,30 +62,115 @@ const Registration = () => {
                 <CustomsInput
                   placeholder="Last name"
                   type="text"
-                  inputName="lastname"
+                  inputName="last_name"
                   register={register}
                   errors={errors}
                   validation={{
-                    required: "Please enter the name",
+                    required: "name required",
                     max: {
                       value: 8,
                       message: "8 characters allowed",
                     },
                     pattern: {
                       value: /^[A-Za-z ]{1,7}$/,
-                      message: "Please enter a valid name",
+                      message: "Invalid name",
                     },
                   }}
                 />
               </div>
-
-              <div className="registerButton">
-                <Button type="submit" />Register
+            </div>
+            <div className={registerStyleModule.registerEmail}>
+              <CustomsInput
+                icon={faEnvelope}
+                placeholder="Email"
+                type="email"
+                inputName="email"
+                register={register}
+                errors={errors}
+                validation={{
+                  required: "Please enter the email",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Please enter a valid email",
+                  },
+                }}
+              />
+            </div>
+            <div className={registerStyleModule.registerPhoneNumber}>
+              <CustomsInput
+                placeholder="Enter phone number"
+                icon={faPhone}
+                type="text"
+                inputName="mobile_number"
+                register={register}
+                errors={errors}
+                validation={{
+                  required: "Please enter the phone number",
+                  pattern: {
+                    value: /^\d{10}$/,
+                    message: "Please enter a valid 10-digit phone number",
+                  },
+                }}
+              />
+            </div>
+            <div className={registerStyleModule.registerPassword}>
+              <CustomsInput
+                icon={faLock}
+                placeholder="Password"
+                type="password"
+                inputName="password"
+                register={register}
+                errors={errors}
+                validation={{
+                  required: "Please enter the password",
+                  minLength: {
+                    value: 8,
+                    message: "8 character's allowed",
+                  },
+                  pattern: {
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                    message: "Invalid Password",
+                  },
+                }}
+              />
+            </div>
+            <div className={registerStyleModule.confirmPassword}>
+              <CustomsInput
+                icon={faLock}
+                placeholder="Confirm Password"
+                type="password"
+                inputName="confirm_password"
+                register={register}
+                errors={errors}
+                validation={{
+                  required: "Please enter the password",
+                  validate: (value) =>
+                    value === password || "Passwords do not match",
+                }}
+              />
+            </div>
+            <div className={registerStyleModule.registerAndLoginLink}>
+              <div className={registerStyleModule.registerButton}>
+                <Button
+                  type="submit"
+                  className={registerStyleModule.signupButton}
+                >
+                  Register
+                </Button>
+              </div>
+              <div className={registerStyleModule.alreadyAccount}>
+                Already have an account ?
+                <Link className="text-blue-800" to="/login">
+                  Login
+                </Link>
               </div>
             </div>
           </form>
-
         </div>
+      </div>
+      <div className={registerStyleModule.registerImage}>
+        <img src={registerImage} alt="registerImage" />
       </div>
     </div>
   );
