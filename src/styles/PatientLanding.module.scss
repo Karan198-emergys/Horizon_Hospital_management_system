@@ -1,24 +1,36 @@
 .patientScreen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
 
-  .profileSection{
+  .profileSection {
     display: flex;
     gap: 0.8rem;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
   }
 
   .patientDashBoard {
     display: flex;
-    gap:0.8rem;
+    gap: 0.8rem;
     width: 100%;
-    height: 93.3vh;
+    height: calc(100vh - 6rem);
+
     .patientSidebar {
       width: 14%;
       height: 100%;
+      min-width: 180px;
+      background-color: #f8f9fa; 
+      overflow-y: auto; 
     }
+
     .dashboard {
-      width:100%;
+      width: calc(86% - 0.8rem);
       height: 100%;
-    }
+      overflow-y: auto; 
+      padding: 1rem; 
   }
+}
 }

@@ -1,8 +1,7 @@
 .inputError {
-  color: #ff0048;
-  width: 80%;
+  color: #ff366f;
+  width: 94%;
   font-weight: 600;
-  padding: 0.2rem 0 0.1rem 0;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -30,6 +29,7 @@
   input {
     width: 87%;
     height: 100%;
+    padding: 0 0 0 0.2rem;
     font-size: 1.25rem;
     outline: none;
     &::placeholder {

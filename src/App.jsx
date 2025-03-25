@@ -1,12 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "../src/styles/styles.scss";
+import "./styles/styles.scss"; // Removed unnecessary "../src/"
 import LandingPage from "./Pages/LandingPage";
 import LoginScreen from "./Pages/LoginScreen";
 import RegistrationScreen from "./Pages/RegistrationScreen";
-import "src/styles/styles.scss";
 import PatientLandingPage from "./Pages/PatientLandingPage";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
-import { Children } from "react";
+import PatientForm from "./Components/Forms/PatientForm";
 
 const router = createBrowserRouter([
   {
@@ -22,34 +21,30 @@ const router = createBrowserRouter([
     element: <RegistrationScreen />,
   },
   {
-    path: "*",
-    element: <div>Page not found</div>,
+    path: "/user",
+    element: (
+      <ProtectedRoutes allowedRoles="user">
+        <PatientLandingPage />
+      </ProtectedRoutes>
+    ),
+    children: [{ path: "profile", element: <PatientForm /> }],
   },
   {
-    path: "/dashboard",
-    element: <ProtectedRoutes />,
-    children: [
-      {
-        path: "/dashboard/patientDashboard",
-        element: <PatientLandingPage />,
-        // children:[
-
-        // ]
-      },
-      {
-        path: "/dashboard/adminDashboard",
-        element: <div>Admin Dashboard</div>,
-      },
-    ],
+    path: "/admin",
+    element: (
+      <ProtectedRoutes allowedRoles="admin">
+        <div>this is the admin dashboards</div>
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "*",
+    element: <div>Page not found</div>,
   },
 ]);
 
 const App = () => {
-  return (
-    <div className=" ">
-      <RouterProvider router={router} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

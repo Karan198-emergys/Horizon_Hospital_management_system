@@ -18,17 +18,25 @@ const Login = () => {
     reset,
   } = useForm();
 
-  const toNavigate = useNavigate();
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const { loading  , isAdmin} = useSelector((state) => state.authentication);
+  const { loading, isAdmin  , role } = useSelector((state) => state.authentication);
 
   const onSubmit = async (data) => {
+    const payload = {
+      email: data.email,
+      user_password: data.password,
+    };
+
     try {
-      if (data && !loading) {
-        await dispatch(loginUser(data));
-      (isAdmin ? toNavigate("/dashboard/adminDashboard") : toNavigate("/dashboard/patientDashboard"))
+      const result = await dispatch(loginUser(payload)).unwrap();
+
+      if (result.isAdmin && role === "admin"  ) {
+        navigate("/admin");
+        toast.success("Login successful as admin");
+      } else {
+        navigate("/user");
+        toast.success("Login successful as patient");
       }
     } catch (error) {
       toast.error(error.message);
@@ -70,33 +78,25 @@ const Login = () => {
                 required: "Please enter the password",
               }}
             />
-            <div className="toRegister">
-              Don't have account ?{" "}
-              <Link className=" text-blue-600" to="/registration">
+            <div className={LoginModuleCss.toRegister}>
+              Don't have an account?{" "}
+              <Link className="underline text-blue-600" to="/registration">
                 Register
               </Link>
             </div>
             <div className={LoginModuleCss.loginButton}>
-              <button type="submit">{loading ? "logging..." : "Log In"}</button>
+              <button type="submit">{loading ? "Logging in..." : "Log In"}</button>
             </div>
           </form>
         </div>
-        <div className=" flex items-center justify-center w-full">
-          <span className=" border-b-2 border-teal-700 w-[40%]"></span>
-          <span className=" pl-1 pr-1 text-xl text-gray-800">OR</span>
-          <span className="border-b-2 border-teal-700 w-[40%]"></span>
-        </div>
-        <div className="googleLogin w-full flex item-centre justify-center">
-          <button className=" w-[70%] border-teal-600 rounded-4xl border-2 p-2 cursor-pointer">
-            {" "}
-            Continue with Google
-          </button>
+        <div className={LoginModuleCss.loginUnderline}>
+          <span className={LoginModuleCss.line}></span>
+          <span className={LoginModuleCss.or}>OR</span>
+          <span className={LoginModuleCss.line}></span>
         </div>
       </div>
       <div className="loginScreenImage w-1/2">
-        <div>
-          <img src={authenticateScreenImage} alt="" />
-        </div>
+        <img src={authenticateScreenImage} alt="Authentication" />
       </div>
     </div>
   );

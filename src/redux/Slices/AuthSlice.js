@@ -3,12 +3,14 @@ import { loginUser, registerUser } from "./async/AsyncFunction";
 import { toast } from "react-toastify";
 
 const initialState = {
-  user: null,
-  role: null,
-  isAdmin: 0,
-  token: null,
-  isAuthenticated: false,
+  token: localStorage.getItem("token") || null,
+  firstName: "",
+  lastName: "",
+  email: "",
+  role: localStorage.getItem("role") || null,
+  isAdmin: localStorage.getItem("isAdmin") || 0,
   loading: false,
+  isAuthenticated: localStorage.getItem("isAuthenticated") || false,
 };
 
 export const AuthenticationSlice = createSlice({
@@ -22,6 +24,9 @@ export const AuthenticationSlice = createSlice({
       state.token = null;
       state.isAuthenticated = false;
       localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("isAdmin");
+      localStorage.removeItem("isAuthenticated");
       window.location.href = "/login";
       return state;
     },
@@ -31,10 +36,16 @@ export const AuthenticationSlice = createSlice({
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
       })
-      .addCase(registerUser.fulfilled, (state) => {
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
+        console.log("Payload received:", action.payload);
+
+        state.firstName = action.payload?.first_name;
+        state.lastName = action.payload?.last_name;
+        state.email = action.payload?.email;
+
+        console.log(state.firstName, state.lastName, state.email);
         window.location.href = "/login";
-        console.log(state);
         toast.success("Registration Successful");
       })
       .addCase(registerUser.rejected, (state) => {
@@ -50,14 +61,17 @@ export const AuthenticationSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isAuthenticated = true;
+        localStorage.setItem("isAuthenticated", true);
         state.loading = false;
         state.user = action.payload.user;
         state.isAdmin = action.payload.isAdmin;
         if (state.isAdmin) {
           state.role = "admin";
+          localStorage.setItem("role", "admin");
           localStorage.setItem("isAdmin", 1);
         } else {
           state.role = "user";
+          localStorage.setItem("role", "user");
           localStorage.setItem("isAdmin", 0);
         }
         state.token = action.payload.token;

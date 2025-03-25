@@ -1,6 +1,9 @@
 import profileModuleCss from "./profile.module.scss"
 
 const Profile = props => {
+
+  
+
   return (
     <div className={profileModuleCss.profileContainer}>
         S 9

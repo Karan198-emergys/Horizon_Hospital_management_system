@@ -1,22 +1,18 @@
-import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useLocation, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-const ProtectedRoutes = () => {
-  const toLocation = useLocation();
+const ProtectedRoutes = ({ children, allowedRoles }) => {
+  const { role, token } = useSelector((state) => state.authentication);
 
-  const { token, isAuthenticated, isAdmin } = useSelector(
-    (state) => state.authentication
-  );
+  const userRole = localStorage.getItem("role");
 
-  if (!token && isAuthenticated) {
-    toLocation("/login");
+  if (!role && !token) {
+    return <Navigate to="/login" replace />;
   }
-  if (token && isAdmin) {
-    toLocation("/adminDashboard");
+  if (role && allowedRoles && !allowedRoles.includes(userRole)) {
+    return <Navigate to="/login" />;
   }
-  if (token && !isAdmin) {
-    toLocation("/patientDashboard");
-  }
+  return children;
 };
 
 export default ProtectedRoutes;

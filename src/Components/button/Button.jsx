@@ -2,9 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import ButtonStyles from "./button.module.scss";
 
-const Button = ({ children, className = "", buttonClassName = "", type = "button" }) => {
+const Button = ({
+  children,
+  className = "",
+  type = "button",
+  onclickFunction,
+}) => {
   return (
-    <button type={type} className={`${ButtonStyles.customButton} ${buttonClassName} ${className}`}>
+    <button
+      type={type}
+      className={`${ButtonStyles.customButton} ${className}`}
+      onClick={onclickFunction}
+    >
       {children}
     </button>
   );
@@ -14,7 +23,8 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   buttonClassName: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  onclickFunction: PropTypes.func,
 };
 
 export default Button;

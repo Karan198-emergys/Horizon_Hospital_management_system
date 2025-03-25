@@ -7,8 +7,8 @@ export const loginUser = createAsyncThunk(
   "authentication/loginUser", // this is the action name which will be define the action creator function and which type of action will be dispatched
   async (Credential, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("/user/login", Credential);
-      toast.success("Login Successful");
+      const response = await axiosInstance.post("user/login", Credential);
+      toast.success(response.data.message);
       return response.data;
     } catch (error) {
       toast.error(error.response.data.message);
