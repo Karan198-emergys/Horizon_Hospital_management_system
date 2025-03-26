@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import { Outlet, useLocation, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -15,4 +16,8 @@ const ProtectedRoutes = ({ children, allowedRoles }) => {
   return children;
 };
 
+ProtectedRoutes.propTypes = {
+  children: PropTypes.node.isRequired,
+  allowedRoles: PropTypes.arrayOf(PropTypes.string),
+};
 export default ProtectedRoutes;

@@ -1,0 +1,85 @@
+form {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.38rem;
+  
+    .patientMainInformation {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 1.3rem;
+  
+      label {
+        width: 100%;
+        display: flex;
+        font-size: 1.25rem;
+      }
+      select {
+        width: 100%;
+        border: 2px solid var(--primary-color);
+        border-radius: 0.5rem;
+        outline: none;
+        font-size: 1.25rem;
+      }
+    }
+    .bodyMetrics {
+      display: flex;
+      justify-content: left;
+      gap: 1rem;
+  
+      label {
+        display: flex;
+        width: 33%;
+        font-size: 1.25rem;
+      }
+    }
+  
+    .healthHistory {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 1.3rem;
+      label {
+        width: 100%;
+        font-size: 1.25rem;
+      }
+      .healthCheckBox {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .countryOrigin {
+      width: 33%;
+      display: flex;
+      height: 3rem;
+      align-items: center;
+      font-size: 1.25rem;
+      gap: 1rem;
+    }
+  
+    .personalButton {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      position: absolute;
+      // left: 77.8%;
+      right: 2%;
+      top: 64vh;
+  
+      button {
+        width: 16%;
+        height: 3rem;
+        border: none;
+        background: var(--primary-color);
+        color: var(--text-color);
+        border-radius: 0.5rem;
+        font-size: 1.25rem;
+      }
+    }
+  }
+  

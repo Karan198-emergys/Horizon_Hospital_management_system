@@ -2,16 +2,24 @@ import Navbar from "src/Components/navbar/Navbar";
 import Profile from "src/Components/Profile/Profile";
 import Sidebar from "src/Components/sidebar/Sidebar";
 import patientDashBoardModule from "src/styles/PatientLanding.module.scss";
-import PatientDashBoard from "./PatientDashBoard";
 import { useDispatch } from "react-redux";
 import { logout } from "src/redux/Slices/AuthSlice";
 import { toast } from "react-toastify";
-import CustomLink from "src/Components/link/CustomLink";
 import { Button } from "src/Components";
 import { Outlet } from "react-router-dom";
+import Menu from "src/Components/Menu/Menu";
+import {
+  faHospitalUser,
+  faHouse,
+  faNotesMedical,
+  faPerson,
+} from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const PatientLandingPage = () => {
   const dispatch = useDispatch();
+
+  const { role } = useSelector((state) => state.authentication);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -22,22 +30,31 @@ const PatientLandingPage = () => {
     <div className={patientDashBoardModule.patientScreen}>
       <Navbar>
         <div className={patientDashBoardModule.profileSection}>
-          Patient: <Profile />
+          {role === "admin" ? "Admin" : "Patient"} : <Profile />
         </div>
       </Navbar>
       <div className={patientDashBoardModule.patientDashBoard}>
         <Sidebar className={patientDashBoardModule.patientSidebar}>
           <div>
-            <Button type="button" onclickFunction={handleLogout}>
-              {" "}
-              {/* Fixed onClick */}
+            <Menu icon={faHouse}>Home</Menu>
+            <Menu icon={faPerson}>Profile</Menu>
+            <Menu icon={faHospitalUser} to="/user/profile">
+              View Patients
+            </Menu>
+            <Menu icon={faNotesMedical}>View Medications</Menu>
+          </div>
+          <div className={patientDashBoardModule.logoutButton}>
+            <Button
+              className={patientDashBoardModule.logout}
+              type="button"
+              onclickFunction={handleLogout}
+            >
               Logout
             </Button>
           </div>
         </Sidebar>
-        <PatientDashBoard className={patientDashBoardModule.dashboard} />
+        <Outlet className={patientDashBoardModule.dashboard} />
       </div>
-      <Outlet />
     </div>
   );
 };

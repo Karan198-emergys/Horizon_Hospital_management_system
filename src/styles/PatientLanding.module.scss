@@ -16,21 +16,37 @@
     display: flex;
     gap: 0.8rem;
     width: 100%;
-    height: calc(100vh - 6rem);
+    height: 100vh;
 
     .patientSidebar {
       width: 14%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       min-width: 180px;
-      background-color: #f8f9fa; 
-      overflow-y: auto; 
+      background-color: #f8f9fa;
+      overflow-y: auto;
+
+      .logoutButton {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0 0.2rem 0.8rem 0.2rem;
+        width: 100%;
+        justify-content: start;
+        .logout {
+          height: 3rem;
+          width: 100%;
+        }
+      }
     }
 
     .dashboard {
       width: calc(86% - 0.8rem);
       height: 100%;
-      overflow-y: auto; 
-      padding: 1rem; 
+      overflow-y: auto;
+      padding: 1rem;
+    }
   }
-}
 }

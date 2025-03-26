@@ -27,7 +27,6 @@ export const AuthenticationSlice = createSlice({
       localStorage.removeItem("role");
       localStorage.removeItem("isAdmin");
       localStorage.removeItem("isAuthenticated");
-      window.location.href = "/login";
       return state;
     },
   },

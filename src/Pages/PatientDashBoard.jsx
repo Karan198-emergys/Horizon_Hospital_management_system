@@ -1,7 +1,8 @@
-import { useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import PatientForm from "src/Components/Forms/PatientForm";
 import CustomLink from "src/Components/link/CustomLink";
 import PatientScreenModule from "src/styles/patientDashboard.module.scss";
+import ViewPatient from "./patient-Pages/ViewPatient";
 
 const PatientDashBoard = (props) => {
   const location = useLocation();
@@ -9,15 +10,13 @@ const PatientDashBoard = (props) => {
   return (
     <div className={PatientScreenModule.patientScreen}>
       <div className={PatientScreenModule.addPatientSection}>
-        <CustomLink className={PatientScreenModule.addPatientButton}>
+        <CustomLink to="/user/patientForm" className={PatientScreenModule.addPatientButton}>
           Add Patient
         </CustomLink>
-        {
-          (location.pathname === "/profile" ? (
-            <PatientForm/>
-          ) : null)
-        }
+        {location.pathname === "/patientForm" && <PatientForm />}
+        {location.pathname === "/patient"&& <ViewPatient />}
       </div>
+      <Outlet />
     </div>
   );
 };

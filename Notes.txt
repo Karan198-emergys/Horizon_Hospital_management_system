@@ -1,0 +1,83 @@
+# Patient Form Documentation
+
+## 1. Overview
+The Patient Form is designed to collect essential patient details, medical history, and supporting documents for effective healthcare management. This form ensures comprehensive data collection for accurate diagnosis and treatment planning.
+
+---
+
+## 2. Form Sections
+
+### **A. Patient Information**
+This section captures general details about the patient.
+
+- **Name**: Full legal name of the patient.
+- **Date of Birth**: Patient's birth date (Format: DD/MM/YYYY).
+- **Gender**: Select from Male, Female, or Other.
+- **Weight**: Patient’s weight in kilograms (kg).
+- **Height**: Patient’s height in centimeters (cm).
+- **Country of Origin**: The patient's country of birth.
+- **Medical Conditions (Checkboxes)**:
+  - **Is Diabetic**: Yes / No.
+  - **Cardiac Issue**: Yes / No.
+  - **Blood Pressure Issue**: Yes / No.
+
+---
+
+### **B. Family Information**
+This section gathers parental details and relevant medical history.
+
+- **Father**:
+  - Name
+  - Country of Origin
+  - Age
+- **Mother**:
+  - Name
+  - Country of Origin
+  - Age
+- **Parental Medical History (Checkboxes)**:
+  - **Parent Blood Pressure Issue**: Yes / No.
+  - **Parent Cardiac Issue**: Yes / No.
+  - **Parent Diabetic Issue**: Yes / No.
+
+---
+
+### **C. Disease Information**
+This section records any pre-existing conditions the patient has.
+
+- **Type of Disease**: Text field for specifying disease name.
+- **Description**: A detailed textarea for symptoms, diagnosis, or any other relevant information.
+
+---
+
+### **D. Document Upload**
+Patients must upload at least one document, with a maximum of four, to support their medical records.
+
+- **Accepted Documents**:
+  - Medical reports
+  - Prescriptions
+  - Insurance documents
+  - Identity proof (Passport, National ID, or Driver’s License)
+- **File Format**: PDF, JPEG, PNG
+- **Minimum Upload Requirement**: At least 1 document.
+
+---
+
+## 3. Form Validation & Submission
+- **All fields marked as required must be filled before submission.**
+- **Checkboxes should be checked only if the condition applies.**
+- **The document section must have at least one uploaded file.**
+- **Error messages should guide users in case of invalid entries.**
+
+---
+
+## 4. Security & Compliance
+- **Data Encryption**: Patient data will be encrypted to ensure confidentiality.
+- **GDPR/HIPAA Compliance**: The form adheres to healthcare data protection laws.
+- **Secure Document Storage**: Uploaded files are securely stored and accessible only to authorized personnel.
+
+---
+
+## 5. Future Enhancements
+- **Integration with Electronic Health Records (EHR).**
+- **Auto-fill patient history for returning users.**
+- **Multilingual support for international patients.**

@@ -6,6 +6,8 @@ import RegistrationScreen from "./Pages/RegistrationScreen";
 import PatientLandingPage from "./Pages/PatientLandingPage";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 import PatientForm from "./Components/Forms/PatientForm";
+import PatientDashBoard from "./Pages/PatientDashBoard";
+import ViewPatient from "./Pages/patient-Pages/ViewPatient";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,14 @@ const router = createBrowserRouter([
         <PatientLandingPage />
       </ProtectedRoutes>
     ),
-    children: [{ path: "profile", element: <PatientForm /> }],
+    children: [
+      {
+        path:"/user",
+        element: <PatientDashBoard />,
+        children: [{ path: "patientForm", element: <PatientForm /> }],
+      },
+      { path: "profile", element: <ViewPatient /> },
+    ],
   },
   {
     path: "/admin",

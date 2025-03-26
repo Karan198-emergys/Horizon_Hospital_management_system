@@ -6,7 +6,7 @@ const Profile = props => {
 
   return (
     <div className={profileModuleCss.profileContainer}>
-        S 9
+        K D
     </div>
   )
 }
