@@ -23,7 +23,7 @@ const LandingPage = () => {
           </div>
         </div>
       </Navbar>
-      <div className="bannerContainer"></div>
+      <div className={LandingModule.bannerSection}></div>
     </div>
   );
 };

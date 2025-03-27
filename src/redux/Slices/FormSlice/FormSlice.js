@@ -16,11 +16,16 @@ const fromSlice = createSlice({
   initialState,
   reducers: {
     nextStep: (state) => {
+      if (state.step >= 4) {
+        state.step = 1;
+        return;
+      }
       state.step++;
       localStorage.setItem("step", state.step);
     },
     backStep: (state) => {
       if (state.step > 1) state.step--;
+      localStorage.setItem("step", state.step)
     },
     setFormName: (state, action) => {
       state.formName = action.payload;

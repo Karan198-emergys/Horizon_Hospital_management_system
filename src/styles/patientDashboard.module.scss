@@ -1,5 +1,8 @@
 .patientScreen {
   width: 86%;
+  background-image: url("src/assets/dashboardImage.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
   .addPatientSection {
     width: 100%;
     height: 10%;
@@ -11,10 +14,11 @@
     .addPatientButton {
       height: 100%;
       width: 16%;
+      border: 3px solid var(--primary-color);
 
       &:hover {
-        background-color: var(--BeforeBg-Color);
-        color: var(--hoverText-color);
+        background-color: var(--primary-color);
+        color: var(--text-hover);
       }
     }
   }

@@ -1,0 +1,33 @@
+form {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.38rem;
+
+    .documentButton {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        padding:0 0 0 4%;
+        right: 2%;
+        top: 62vh;
+    
+        button {
+        width: 16%;
+        height: 3rem;
+        border: none;
+        background: var(--primary-color);
+        color: var(--text-color);
+        border-radius: 0.5rem;
+        font-size: 1.25rem;
+    
+        &:hover {
+            color: var(--text-hover);
+        }
+        }
+    }
+}

@@ -1,85 +1,73 @@
 import React from "react";
 import PropTypes from "prop-types";
-import familyInfoStyle from "./FamilyInfo.module.scss";
-import { useDispatch } from "react-redux";
-import { nextStep } from "src/redux/Slices/FormSlice/FormSlice";
 import CustomInput from "src/Components/Inputs/CustomsInput";
 import CustomCheckbox from "src/Components/CheckBox/CustomCheckBox";
 import { Button } from "src/Components";
+import { useDispatch } from "react-redux";
+import { nextStep , backStep } from "src/redux/Slices/FormSlice/FormSlice";
+import styles from "src/Components/Forms/subForms/familyInfo.module.scss";
 
 const FamilyInfo = ({ className }) => {
   const dispatch = useDispatch();
 
-  const personalNextButtonHandler = () => {
+  const handleNext = () => {
     dispatch(nextStep());
   };
 
-  return (
-    <div>
-      <form className={className}>
-        <div className={familyInfoStyle.patientMainInformation}>
-          <label htmlFor="patientName">
-            Patient Name:{" "}
-            <CustomInput
-              type="text"
-              placeholder="Patient Name"
-              id="patientName"
-              InputName="patient_name"
-            />
-          </label>
-          <label htmlFor="DOB">
-            Date of Birth:{" "}
-            <CustomInput type="date" id="DOB" InputName="date_of_birth" />
-          </label>
-        </div>
-        <div className={familyInfoStyle.bodyMetrics}>
-          <label htmlFor="height">
-            Height (cm):{" "}
-            <CustomInput type="number" id="height" InputName="height" />
-          </label>
-          <label htmlFor="weight">
-            Weight (kg):{" "}
-            <CustomInput type="number" id="weight" InputName="weight" />
-          </label>
-        </div>
+  const handleBack = () => {
+    dispatch(backStep());
+  };
 
-        <label htmlFor="country" className={familyInfoStyle.countryOrigin}>
-          Country:{" "}
-          <CustomInput
-            type="text"
-            placeholder="country"
-            id="country"
-            InputName="country_of_origin"
-          />
+
+  return (
+    <form className={`${styles.familyForm} ${className}`}>
+      <div className={styles.familyDetails}>
+        <label htmlFor="fatherName">
+          Father&apos;s Name:
+          <CustomInput type="text" placeholder="Father&apos;s Name" id="fatherName" InputName="father_name" />
         </label>
-        <div className={familyInfoStyle.healthHistory}>
-          <label>Health History :</label>
-          <CustomCheckbox
-            className={familyInfoStyle.healthCheckBox}
-            label="Diabetic"
-            id="isDiabetic"
-          />
-          <CustomCheckbox
-            className={familyInfoStyle.healthCheckBox}
-            label="Blood Pressure"
-            id="isBloodPressure"
-          />
-          <CustomCheckbox
-            className={familyInfoStyle.healthCheckBox}
-            label="Cardiac"
-            id="isCardiac"
-          />
-        </div>
-        <div className={familyInfoStyle.personalButton}>
-          <Button onclickFunction={personalNextButtonHandler}>
-            Next Button
-          </Button>
-        </div>
-      </form>
-    </div>
+        <label htmlFor="fatherCountry">
+          Country of Origin:
+          <CustomInput type="text" placeholder="Country" id="fatherCountry" InputName="father_country" />
+        </label>
+        <label htmlFor="fatherAge">
+          Age:
+          <CustomInput type="number" placeholder=" Father Age" id="fatherAge" InputName="father_age" />
+        </label>
+      </div>
+
+      <div className={styles.familyDetails}>
+        <label htmlFor="motherName">
+          Mother&apos;s Name:
+          <CustomInput type="text" placeholder="Mother&apos;s Name" id="motherName" InputName="mother_name" />
+        </label>
+        <label htmlFor="motherCountry">
+          Country of Origin:
+          <CustomInput type="text" placeholder="Country" id="motherCountry" InputName="mother_country" />
+        </label>
+        <label htmlFor="motherAge">
+          Age:
+          <CustomInput type="number" placeholder=" Mother Age" id="motherAge" InputName="mother_age" />
+        </label>
+      </div>
+
+      <div className={styles.medicalHistory}>
+        <label>Parental Medical History:</label>
+        <CustomCheckbox className={styles.healthCheckBox} label="Blood Pressure Issue" id="parentBP" />
+        <CustomCheckbox className={styles.healthCheckBox} label="Cardiac Issue" id="parentCardiac" />
+        <CustomCheckbox className={styles.healthCheckBox} label="Diabetic Issue" id="parentDiabetic" />
+      </div>
+
+      <div className={styles.familyButton}>
+        <Button onclickFunction={handleBack}>Go back</Button>
+        <Button onclickFunction={handleNext}>Next</Button>
+      </div>
+    </form>
   );
 };
 
-FamilyInfo.propTypes = {};
+FamilyInfo.propTypes = {
+  className: PropTypes.string,
+};
 
 export default FamilyInfo;
