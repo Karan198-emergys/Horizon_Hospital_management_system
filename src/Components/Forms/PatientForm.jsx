@@ -12,7 +12,7 @@ const PatientForm = () => {
   const { step } = useSelector((state) => state.patientForm);
 
   useEffect(() => {
-    setCurrentStep(parseInt(localStorage.getItem("step") || 1,10));
+    setCurrentStep(parseInt(localStorage.getItem("step") || 1));
   }, [step]);
 
   return (

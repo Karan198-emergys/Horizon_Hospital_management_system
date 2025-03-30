@@ -3,22 +3,44 @@
   background-image: url("src/assets/dashboardImage.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
-  .addPatientSection {
+
+  .welcome {
     width: 100%;
-    height: 10%;
     display: flex;
-    justify-content: end;
-    align-items: center;
-    padding: 2% 2rem 0 0;
 
-    .addPatientButton {
-      height: 100%;
-      width: 16%;
-      border: 3px solid var(--primary-color);
+    .welcomeText {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      position: relative;
+      justify-content: start;
+      padding: 3rem 0 0 4rem;
 
-      &:hover {
-        background-color: var(--primary-color);
-        color: var(--text-hover);
+      span {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--text-color);
+        gap: 0.5rem;
+      }
+    }
+
+    .addPatientSection {
+      width: 60%;
+      height: 20%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      padding: 2% 2rem 0 0;
+
+      .addPatientButton {
+        height: 3rem;
+        width: 26%;
+        border: 3px solid var(--primary-color);
+
+        &:hover {
+          background-color: var(--primary-color);
+          color: var(--text-hover);
+        }
       }
     }
   }

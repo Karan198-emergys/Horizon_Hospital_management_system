@@ -1,11 +1,27 @@
 :root {
-  --before-color: #00d5be;
-  --primary-color: #009689;
-  --text-color: #101828;
-  --placeholder-color: #99a1af;
-  --text-hover: #f9fafb;
-  --secondary-color: #05df72;
-  --before-bg-color: #00d5be;
-  --active-menu-color: #25f7e2;
-  --form-color: ​#008080;
+  --before-color: #00a8a8; /* Soft Teal, inviting and trustworthy */
+  --primary-color: #006f77; /* Deep Blue-Teal, a trustworthy color that conveys professionalism */
+  --text-color: #2f353b; /* Dark Charcoal for high legibility on white or light backgrounds */
+  --placeholder-color: #7a8288; /* Medium Gray for subtle placeholder text */
+  --text-hover: #ffffff; /* Clean white text for hover effects, ensuring readability */
+  --secondary-color: #28c76a; /* Vibrant Green for action buttons (success, confirm, etc.) */
+  --before-bg-color: #f7f8fa; /* Light Grayish Blue for background - clean and unobtrusive */
+  --active-menu-color: #004c52; /* Darker Blue-Teal, giving depth for active states in navigation */
+  --form-color: #ffffff; /* Pure white for form backgrounds, ensuring clarity and cleanliness */
+
+  /* Interactive States */
+  --hover-bg-color: #005b61; /* Darker shade of the primary color for buttons and links on hover */
+  --active-bg-color: #003c41; /* Even darker shade for active states on buttons */
+  --error-color: #e74c3c; /* Bright Red for error messages, providing urgency and clarity */
+  --success-color: #2ecc71; /* Soft Green for success messages, symbolizing health and growth */
+  --warning-color: #f39c12; /* Soft Yellow for caution or warning messages */
+  --info-color: #3498db; /* Sky Blue for informational states, light and trustworthy */
+  
+  /* Border Colors */
+  --border-color: #e1e8ed; /* Light, neutral border color for form fields, cards, and dividers */
+  --focus-border-color: #006f77; /* Deep Blue-Teal to highlight inputs and focus areas */
+  
+  /* Card and Section Backgrounds */
+  --card-bg-color: #ffffff; /* White background for cards, ensuring clear visibility of content */
+  --section-bg-color: #f1f3f5; /* Light, soft background for larger sections, subtle and professional */
 }

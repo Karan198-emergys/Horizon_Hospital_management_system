@@ -7,14 +7,29 @@ import ViewPatient from "./patient-Pages/ViewPatient";
 const PatientDashBoard = (props) => {
   const location = useLocation();
 
+
+
   return (
     <div className={PatientScreenModule.patientScreen}>
-      <div className={PatientScreenModule.addPatientSection}>
-        <CustomLink to="/user/patientForm" className={PatientScreenModule.addPatientButton}>
-          Add Patient
-        </CustomLink>
+      <div className={PatientScreenModule.welcome}>
+        <div className={PatientScreenModule.welcomeText}>
+          <span>
+            Welcome Back , <br />
+            karan's
+          </span>
+        </div>
+        <div className={PatientScreenModule.addPatientSection}>
+          <CustomLink
+            to="/user/patientForm"
+            className={PatientScreenModule.addPatientButton}
+          >
+            Add Patient
+          </CustomLink>
+        </div>
+      </div>
+      <div>
         {location.pathname === "/patientForm" && <PatientForm />}
-        {location.pathname === "/patient"&& <ViewPatient />}
+        {location.pathname === "/patient" && <ViewPatient />}
       </div>
       <Outlet />
     </div>

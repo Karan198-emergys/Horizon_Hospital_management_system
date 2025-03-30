@@ -23,10 +23,7 @@ export const AuthenticationSlice = createSlice({
       state.isAdmin = 0;
       state.token = null;
       state.isAuthenticated = false;
-      localStorage.removeItem("token");
-      localStorage.removeItem("role");
-      localStorage.removeItem("isAdmin");
-      localStorage.removeItem("isAuthenticated");
+      localStorage.clear();
       return state;
     },
   },
@@ -38,9 +35,6 @@ export const AuthenticationSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
         console.log("Payload received:", action.payload);
-
-        state.firstName = action.payload?.first_name;
-        state.lastName = action.payload?.last_name;
         state.email = action.payload?.email;
 
         console.log(state.firstName, state.lastName, state.email);
@@ -63,6 +57,8 @@ export const AuthenticationSlice = createSlice({
         localStorage.setItem("isAuthenticated", true);
         state.loading = false;
         state.user = action.payload.user;
+        state.firstName = action.payload?.first_name;
+        state.lastName = action.payload?.last_name;
         state.isAdmin = action.payload.isAdmin;
         if (state.isAdmin) {
           state.role = "admin";

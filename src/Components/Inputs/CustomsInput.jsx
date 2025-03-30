@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import inputStyle from "../Inputs/CustomInput.module.scss";
 
 const CustomsInput = ({
+  onChange,
+  name,
   inputMainCLassName,
   className,
   id,
@@ -14,9 +16,13 @@ const CustomsInput = ({
   errors,
   inputName,
   validation,
+  minLength,
+  maxLength,
+  mainContainer,
+  acceptingTypes
 }) => {
   return (
-    <>
+    <div className={`${inputStyle.InputMainContainer} ${mainContainer}`}>
       {errors?.[inputName] && (
         <span className={inputStyle.inputError}>
           {errors?.[inputName].message}
@@ -31,12 +37,17 @@ const CustomsInput = ({
         <input
           type={type}
           id={id}
+          name={name}
           className={`${className}`}
           placeholder={placeholder}
           {...(register ? register(inputName, validation) : {})}
+          onChange={onChange}
+          min={minLength}
+          max={maxLength}
+          accept={acceptingTypes}
         />
       </div>
-    </>
+    </div>
   );
 };
 
@@ -51,6 +62,11 @@ CustomsInput.propTypes = {
   error: PropTypes.object,
   inputName: PropTypes.string.isRequired,
   validation: PropTypes.object,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  mainContainer: PropTypes.string,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default CustomsInput;
