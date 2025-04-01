@@ -4,7 +4,7 @@ import CustomLink from "src/Components/link/CustomLink";
 import PatientScreenModule from "src/styles/patientDashboard.module.scss";
 import ViewPatient from "./patient-Pages/ViewPatient";
 
-const PatientDashBoard = (props) => {
+const PatientDashBoard = () => {
   const location = useLocation();
 
 

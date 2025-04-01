@@ -7,21 +7,20 @@ import Document from "./subForms/Document";
 import patientFromStyle from "./patientForm.module.scss";
 
 const PatientForm = () => {
-  const [currentStep, setCurrentStep] = React.useState(1);
 
   const { step } = useSelector((state) => state.patientForm);
 
-  useEffect(() => {
-    setCurrentStep(parseInt(localStorage.getItem("step") || 1));
-  }, [step]);
-
   return (
     <div className={patientFromStyle.patientFormSection}>
-      <h1>Patient Form</h1>
-      {currentStep === 1 && <PersonalInfo />}
-      {currentStep === 2 && <FamilyInfo />}
-      {currentStep === 3 && <DiseaseInfo />}
-      {currentStep === 4 && <Document />}
+      <div className={patientFromStyle.formStepper}>
+        <div className="stepWrapper">
+          
+        </div>
+      </div>
+      {step === 1 && <PersonalInfo />}
+      {step === 2 && <FamilyInfo />}
+      {step === 3 && <DiseaseInfo />}
+      {step === 4 && <Document />}
     </div>
   );
 };

@@ -7,6 +7,7 @@ import {
   diseaseInfo,
   updateDiseaseInfo,
   UpdateFamilyInfo,
+  uploadDocument,
 } from "../async/AsyncFunction";
 
 const initialState = {
@@ -16,12 +17,10 @@ const initialState = {
   personalInfoDetails: {},
   familyInfoDetails: {},
   diseaseInfoDetails: {},
-  Document: [],
-  filePreviewURL: null,
   isEditing: false,
   isUpdating: false,
   isDeleting: false,
-  patient_id: localStorage.getItem("patient_id") || null,
+  patient_id: null,
 };
 
 const fromSlice = createSlice({
@@ -44,15 +43,6 @@ const fromSlice = createSlice({
       state.step = 1;
       localStorage.setItem("step", state.step);
     },
-    documentUpload: (state, action) => {
-      const { filePreviewURL, file, fileName } = action.payload;
-      const documentOBJ = {
-        fileName : fileName.name,
-        filePreviewURL,
-        file,
-      }
-      state.Document.push(documentOBJ);
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -62,7 +52,6 @@ const fromSlice = createSlice({
       .addCase(patientPersonalInfo.fulfilled, (state, action) => {
         state.loading = false;
         state.patient_id = action.payload.data.patient_id;
-        localStorage.setItem("patient_id", action.payload.data.patient_id);
         state.personalInfoDetails = action.payload;
         toast.success("Patient Information added successfully");
       })
@@ -145,6 +134,20 @@ const fromSlice = createSlice({
       .addCase(updateDiseaseInfo.rejected, (state) => {
         state.isUpdating = false;
         toast.error("Failed to update disease history");
+      });
+
+    builder
+      .addCase(uploadDocument.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(uploadDocument.fulfilled, (state, action) => {
+        state.loading = false;
+        toast.success(action.payload.message);
+        return action.payload;
+      })
+      .addCase(uploadDocument.rejected, (state, action) => {
+        state.loading = false;
+        toast.error(action.payload.message);
       });
   },
 });

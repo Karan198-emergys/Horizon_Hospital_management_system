@@ -131,3 +131,13 @@ export const updateDiseaseInfo = createAsyncThunk("/user/updateDiseaseInfo", asy
     return rejectWithValue(error.response.data);
   }
 })
+
+export const uploadDocument = createAsyncThunk("user/uploadDocument" , async (documentData , { rejectWithValue})=> {
+  try {
+    const response = await axiosInstance.post("patient/upload" , documentData);
+    return response.data;
+  }
+  catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+})

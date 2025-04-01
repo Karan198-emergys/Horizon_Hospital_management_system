@@ -70,7 +70,7 @@ export const AuthenticationSlice = createSlice({
           localStorage.setItem("isAdmin", 0);
         }
         state.token = action.payload.token;
-        localStorage.setItem("token", action.payload.token);
+        localStorage.setItem("token", action.payload.data);
       })
       .addCase(loginUser.rejected, (state) => {
         state.isAuthenticated = false;

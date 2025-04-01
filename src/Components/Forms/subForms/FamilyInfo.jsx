@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import CustomInput from "src/Components/Inputs/CustomsInput";
 import CustomCheckBox from "src/Components/CheckBox/CustomCheckBox";
 import Button from "src/Components/button/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { backStep, nextStep } from "src/redux/Slices/FormSlice/FormSlice";
 import styles from "src/Components/Forms/subForms/familyInfo.module.scss";
 import { useForm } from "react-hook-form";
@@ -36,6 +36,8 @@ const FamilyInfo = ({ className }) => {
     },
   });
 
+  const patient_id = useSelector((state) => state.patientForm.patient_id);
+
   useEffect(() => {
     const familySaved = localStorage.getItem("familyInfoDetails");
     if (familySaved) {
@@ -64,7 +66,7 @@ const FamilyInfo = ({ className }) => {
 
   const handleNext = async (data) => {
     const updatedPayload = {
-      patient_id: parseInt(localStorage.getItem("patient_id")),
+      patient_id: patient_id,
       father_name: data.father_name,
       father_age: data.father_age,
       father_country_origin: data.father_country_origin,
@@ -77,7 +79,7 @@ const FamilyInfo = ({ className }) => {
     };
 
     const payload = {
-      patient_id: localStorage.getItem("patient_id"),
+      patient_id: patient_id,
       father_name: data?.father_name,
       father_age: data?.father_age,
       father_country_origin: data?.father_country_origin,

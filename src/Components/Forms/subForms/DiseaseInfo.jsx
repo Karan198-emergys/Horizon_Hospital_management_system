@@ -30,6 +30,8 @@ const DiseaseInfo = ({ className }) => {
     },
   });
 
+  const patient_id = useSelector((state) => state.patientForm.patient_id);
+
   useEffect(() => {
     const savedDiseaseInfo = localStorage.getItem("diseaseInfoDetails");
     if (savedDiseaseInfo) {
@@ -50,13 +52,13 @@ const DiseaseInfo = ({ className }) => {
 
   const handleNext = async (data) => {
     const payload = {
-      patient_id: parseInt(localStorage.getItem("patient_id")),
+      patient_id: patient_id,
       disease_type: data.disease_type,
       disease_description: data.disease_description,
     };
 
     const updatedPayload = {
-      patient_id: parseInt(localStorage.getItem("patient_id")),
+      patient_id: patient_id,
       disease_type: data.disease_type,
       disease_description: data.disease_description,
     };
@@ -133,11 +135,7 @@ const DiseaseInfo = ({ className }) => {
         )}
       </div>
       <div className={styles.diseaseButton}>
-        <Button
-          onclickFunction={backButton}
-        >
-          Go back
-        </Button>
+        <Button onclickFunction={backButton}>Go back</Button>
         {diseaseFormData ? (
           <Button type="submit">Update</Button>
         ) : (

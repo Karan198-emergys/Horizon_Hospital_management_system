@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button } from "src/Components";
 import { backStep } from "src/redux/Slices/FormSlice/FormSlice";
@@ -8,23 +8,30 @@ import {
   documentUpload,
   stepReset,
 } from "src/redux/Slices/FormSlice/FormSlice";
+import { useState } from "react";
+import { uploadDocument } from "src/redux/Slices/async/AsyncFunction";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
 
 const Document = ({}) => {
-  const dispatch = useDispatch();
+  const [document, setDocument] = useState({});
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { patient_id } = useSelector((state) => state.patientForm);
 
   const handleFileChange = (e) => {
-    const file = e.target.file[0];
+    const file = e.target.files[0];
+    const fileName = e.target.name;
     if (!file) return;
     const previewURL = URL.createObjectURL(file);
     if (file) {
-      dispatch(documentUpload({ file, previewURL }));
+      setDocument((prev) => ({
+        ...prev,
+        [fileName]: previewURL,
+        [fileName + "_file"]: file,
+      }));
     }
-
-    // Upload the file to the server
-    const formData = new FormData();
-    formData.append("file", file);
   };
 
   const handleSubmit = () => {
@@ -50,6 +57,26 @@ const Document = ({}) => {
             onChange={handleFileChange}
             name="adhar_front_side"
           />
+          {document.adhar_front_side && (
+            <img src={document.adhar_front_side} alt="Adhar front" />
+          )}
+          <div className={styles.documentFunctionalButton}>
+            <Button
+              onclickFunction={() => {
+                const payload = new FormData();
+                payload.append("file", document.adhar_front_side_file);
+                payload.append("document_type", "Adhar card front");
+                payload.append("patient_id", patient_id);
+                dispatch(uploadDocument({ data: payload }));
+                console.log(payload);
+              }}
+            >
+              <FontAwesomeIcon icon={faUpload} />
+            </Button>
+            <Button>
+              <FontAwesomeIcon icon={faTrash} />
+            </Button>
+          </div>
         </div>
         <div className={styles.documentContainer}>
           <label htmlFor="adharBackSide">Adhar card (back)</label>
@@ -60,6 +87,26 @@ const Document = ({}) => {
             onChange={handleFileChange}
             name="adhar_back_side"
           />
+          {document.adhar_back_side && (
+            <img src={document.adhar_back_side} alt=" adhar back" />
+          )}
+          <div className={styles.documentFunctionalButton}>
+            <Button
+              onclickFunction={() => {
+                const payload = new FormData();
+                payload.append("file", document.adhar_back_side_file);
+                payload.append("document_type", "Adhar card front");
+                payload.append("patient_id", patient_id);
+                dispatch(uploadDocument({ data: payload }));
+                console.log(payload);
+              }}
+            >
+              <FontAwesomeIcon icon={faUpload} />
+            </Button>
+            <Button>
+              <FontAwesomeIcon icon={faTrash} />
+            </Button>
+          </div>
         </div>
         <div className={styles.documentContainer}>
           <label htmlFor="medicalInsuranceFrontSide">
@@ -72,7 +119,33 @@ const Document = ({}) => {
             onChange={handleFileChange}
             name="medical_insurance_front_side"
           />
-          <img src="" alt="" />
+          {document.medical_insurance_back_side && (
+            <img
+              src={document.medical_insurance_back_side}
+              alt="Medical Insurance Back side"
+            />
+          )}
+
+          <div className={styles.documentFunctionalButton}>
+            <Button
+              onclickFunction={() => {
+                const payload = new FormData();
+                payload.append(
+                  "file",
+                  document.medical_insurance_front_side_file
+                );
+                payload.append("document_type", "Adhar card front");
+                payload.append("patient_id", patient_id);
+                dispatch(uploadDocument({ data: payload }));
+                console.log(payload);
+              }}
+            >
+              <FontAwesomeIcon icon={faUpload} />
+            </Button>
+            <Button>
+              <FontAwesomeIcon icon={faTrash} />
+            </Button>
+          </div>
         </div>
         <div className={styles.documentContainer}>
           <label htmlFor="medicalInsuranceBackSide">
@@ -85,6 +158,32 @@ const Document = ({}) => {
             onChange={handleFileChange}
             name="medical_insurance_back_side"
           />
+          {document.medical_insurance_front_side && (
+            <img
+              src={document.medical_insurance_back_side}
+              alt=" Medical Insurance Back side "
+            />
+          )}
+          <div className={styles.documentFunctionalButton}>
+            <Button
+              onclickFunction={() => {
+                const payload = new FormData();
+                payload.append(
+                  "file",
+                  document.medical_insurance_back_side_file
+                );
+                payload.append("document_type", "Adhar card front");
+                payload.append("patient_id", patient_id);
+                dispatch(uploadDocument({ data: payload }));
+                console.log(payload);
+              }}
+            >
+              <FontAwesomeIcon icon={faUpload} />
+            </Button>
+            <Button>
+              <FontAwesomeIcon icon={faTrash} />
+            </Button>
+          </div>
         </div>
       </div>
       <div className={styles.documentButton}>

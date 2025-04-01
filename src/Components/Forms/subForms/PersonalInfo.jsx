@@ -155,10 +155,11 @@ const PersonalInfo = ({ className }) => {
                 message: "Invalid date of birth",
               },
               max: {
-                value: new Date(),
+                value: new Date().toISOString().split("T")[0],
                 message: "Invalid date of birth",
               },
             }}
+            maxLength={`new Date().toISOString().split("T")[0];`}
           />
         </label>
         <select

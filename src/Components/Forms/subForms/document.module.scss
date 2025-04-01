@@ -6,7 +6,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 2.38rem;
-  
+
   .documentContainerClass {
     width: 100%;
     display: flex;
@@ -16,9 +16,36 @@ form {
 
     .documentContainer {
       width: 33%;
+      height: 20vh;
       display: flex;
       flex-direction: column;
       gap: 1rem;
+
+      label {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      img {
+        min-height: 50%;
+      }
+
+      .documentFunctionalButton {
+        display: flex;
+        justify-content: space-around;
+        gap: 1rem;
+        button {
+          height: 100%;
+          width: 30%;
+          &:hover {
+            background-color: var(--primary-color);
+            color: var(--text-hover);
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out,
+              color 0.1s ease-in-out;
+          }
+        }
+      }
     }
   }
 

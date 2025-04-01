@@ -19,7 +19,7 @@ const CustomsInput = ({
   minLength,
   maxLength,
   mainContainer,
-  acceptingTypes
+  acceptingTypes,
 }) => {
   return (
     <div className={`${inputStyle.InputMainContainer} ${mainContainer}`}>
@@ -62,8 +62,8 @@ CustomsInput.propTypes = {
   error: PropTypes.object,
   inputName: PropTypes.string.isRequired,
   validation: PropTypes.object,
-  min: PropTypes.number,
-  max: PropTypes.number,
+  min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   mainContainer: PropTypes.string,
   onChange: PropTypes.func,
   name: PropTypes.string,
