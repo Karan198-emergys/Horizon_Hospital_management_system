@@ -23,6 +23,7 @@ export const AuthenticationSlice = createSlice({
       state.isAdmin = 0;
       state.token = null;
       state.isAuthenticated = false;
+      sessionStorage.clear();
       localStorage.clear();
       return state;
     },
@@ -36,7 +37,6 @@ export const AuthenticationSlice = createSlice({
         state.loading = false;
         console.log("Payload received:", action.payload);
         state.email = action.payload?.email;
-
         console.log(state.firstName, state.lastName, state.email);
         window.location.href = "/login";
         toast.success("Registration Successful");

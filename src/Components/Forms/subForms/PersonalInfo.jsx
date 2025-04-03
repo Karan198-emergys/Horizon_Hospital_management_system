@@ -35,9 +35,12 @@ const PersonalInfo = ({ className }) => {
     },
   });
 
-  const { loading, isUpdating } = useSelector((state) => state.patientForm);
+  const { loading, isUpdating, patient_id } = useSelector(
+    (state) => state.patientForm
+  );
 
   useEffect(() => {
+    console.log("1st useEffect");
     const personalSaved = localStorage.getItem("personalInfoDetails");
     if (personalSaved) {
       setPersonalFormData(JSON.parse(personalSaved));
@@ -45,6 +48,7 @@ const PersonalInfo = ({ className }) => {
   }, []);
 
   useEffect(() => {
+    console.log("2nd useEffect");
     if (personalFormData) {
       reset({
         patient_name: personalFormData.patient_name || "",
@@ -64,7 +68,7 @@ const PersonalInfo = ({ className }) => {
 
   const handleNext = async (data) => {
     const updatedPayload = {
-      patient_id: parseInt(localStorage.getItem("patient_id")),
+      patient_id: patient_id,
       patient_name: data.patient_name,
       date_of_birth: data.date_of_birth,
       gender: data.gender,
@@ -166,7 +170,9 @@ const PersonalInfo = ({ className }) => {
           id="gender"
           {...register("gender", { required: "Please select a gender" })}
         >
-          <option value="" disabled>Select Gender</option>
+          <option value="" selected disabled hidden>
+            Select Gender
+          </option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
@@ -179,6 +185,7 @@ const PersonalInfo = ({ className }) => {
           <CustomsInput
             type="number"
             id="height"
+            step="0.01"
             inputName="height"
             register={register}
             errors={errors}

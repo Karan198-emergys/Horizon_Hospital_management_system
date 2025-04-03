@@ -15,6 +15,7 @@ const rootReducer = combineReducers({
   patientForm: formSliceReducer,
 });
 
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({

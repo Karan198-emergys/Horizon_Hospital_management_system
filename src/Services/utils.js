@@ -22,7 +22,9 @@ axiosInstance.interceptors.response.use(
     if (error.response.status === 401) {
       console.error("Authorized  ! redirecting to the login", error);
       localStorage.removeItem("token");
-      window.location.href = "/login";
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = "/";
     }
     return Promise.reject(error);
   }

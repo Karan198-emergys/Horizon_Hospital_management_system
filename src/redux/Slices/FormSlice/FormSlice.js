@@ -11,7 +11,8 @@ import {
 } from "../async/AsyncFunction";
 
 const initialState = {
-  step: localStorage.getItem("step") || 1,
+  step: 1,
+  showForm: false,
   formName: null,
   loading: false,
   personalInfoDetails: {},
@@ -38,6 +39,12 @@ const fromSlice = createSlice({
     backStep: (state) => {
       if (state.step > 1) state.step--;
       localStorage.setItem("step", state.step);
+    },
+    openForm: (state) => {
+      state.showForm = true;
+    },
+    closeForm: (state) => {
+      state.showForm = false;
     },
     stepReset: (state) => {
       state.step = 1;
@@ -159,6 +166,8 @@ export const {
   backStep,
   setFormName,
   setPatientData,
+  openForm,
+  closeForm,
 } = fromSlice.actions;
 
 export default fromSlice.reducer;

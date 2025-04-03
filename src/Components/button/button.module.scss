@@ -1,10 +1,12 @@
-button {
-  height: 100%;
+.button {
+  height: 3rem;
   width: 100%;
   border: 2px solid var(--before-color);
   border-radius: 6rem;
   cursor: pointer;
   font-size: 1.25rem;
   color: var(--text-color);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

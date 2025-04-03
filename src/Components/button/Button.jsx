@@ -11,7 +11,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`${ButtonStyles.customButton} ${className}`}
+      className={`${ButtonStyles.button} ${className}`}
       onClick={onclickFunction}
     >
       {children}

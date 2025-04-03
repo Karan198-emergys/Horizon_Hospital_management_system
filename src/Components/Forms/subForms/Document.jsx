@@ -95,7 +95,7 @@ const Document = ({}) => {
               onclickFunction={() => {
                 const payload = new FormData();
                 payload.append("file", document.adhar_back_side_file);
-                payload.append("document_type", "Adhar card front");
+                payload.append("document_type", "Adhar card Back");
                 payload.append("patient_id", patient_id);
                 dispatch(uploadDocument({ data: payload }));
                 console.log(payload);

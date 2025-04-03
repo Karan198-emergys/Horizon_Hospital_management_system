@@ -9,7 +9,6 @@ export const loginUser = createAsyncThunk(
   async (Credential, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post("user/login", Credential);
-      toast.success(response.data.message);
       return response.data;
     } catch (error) {
       toast.error(error.response.data.message);
@@ -123,21 +122,29 @@ export const diseaseInfo = createAsyncThunk(
   }
 );
 
-export const updateDiseaseInfo = createAsyncThunk("/user/updateDiseaseInfo", async (updateDiseaseInfo , { rejectWithValue }) => {
-  try {
-    const response = await axiosInstance.put("/patient/updateDiseaseInfo", updateDiseaseInfo);
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
+export const updateDiseaseInfo = createAsyncThunk(
+  "/user/updateDiseaseInfo",
+  async (updateDiseaseInfo, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.put(
+        "/patient/updateDiseaseInfo",
+        updateDiseaseInfo
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-})
+);
 
-export const uploadDocument = createAsyncThunk("user/uploadDocument" , async (documentData , { rejectWithValue})=> {
-  try {
-    const response = await axiosInstance.post("patient/upload" , documentData);
-    return response.data;
+export const uploadDocument = createAsyncThunk(
+  "user/uploadDocument",
+  async (documentData, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.post("patient/upload", documentData);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-  catch (error) {
-    return rejectWithValue(error.response.data);
-  }
-})
+);

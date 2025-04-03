@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import inputStyle from "../Inputs/CustomInput.module.scss";
 
 const CustomsInput = ({
+  step,
   onChange,
   name,
   inputMainCLassName,
@@ -38,6 +39,7 @@ const CustomsInput = ({
           type={type}
           id={id}
           name={name}
+          step={step}
           className={`${className}`}
           placeholder={placeholder}
           {...(register ? register(inputName, validation) : {})}

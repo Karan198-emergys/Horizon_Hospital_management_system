@@ -1,7 +1,7 @@
 .navbarContainer {
   nav {
     display: flex;
-    height: 4rem;
+    height: 5.2rem;
     width: 100%;
     background: var(--primary-color);
     font-size: 1.5rem;
@@ -12,8 +12,9 @@
     .logo {
       display: flex;
       align-items: center;
-      color: var(--text-Color);
+      color: var(--text-hover);
       letter-spacing: 2px;
+      font-size: 3rem;
       cursor: context-menu;
     }
   }

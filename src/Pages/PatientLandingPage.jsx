@@ -30,7 +30,7 @@ const PatientLandingPage = () => {
     <div className={patientDashBoardModule.patientScreen}>
       <Navbar>
         <div className={patientDashBoardModule.profileSection}>
-          {role === "admin" ? "Admin" : "Patient"} : <Profile />
+          {role === "admin" ? "Admin" : "Patient"} <Profile />
         </div>
       </Navbar>
       <div className={patientDashBoardModule.patientDashBoard}>
@@ -38,7 +38,7 @@ const PatientLandingPage = () => {
           <div>
             <Menu icon={faHouse}>Home</Menu>
             <Menu icon={faPerson}>Profile</Menu>
-            <Menu icon={faHospitalUser} to="/user/profile">
+            <Menu icon={faHospitalUser} to="/user/viewPatient">
               View Patients
             </Menu>
             <Menu icon={faNotesMedical}>View Medications</Menu>
@@ -53,7 +53,9 @@ const PatientLandingPage = () => {
             </Button>
           </div>
         </Sidebar>
-        <Outlet className={patientDashBoardModule.dashboard} />
+        <div className={patientDashBoardModule.dashboard}>
+          <Outlet />
+        </div>
       </div>
     </div>
   );

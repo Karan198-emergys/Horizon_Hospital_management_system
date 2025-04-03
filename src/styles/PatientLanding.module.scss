@@ -6,10 +6,11 @@
 
   .profileSection {
     display: flex;
-    gap: 0.8rem;
+    gap: 1.4rem;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    font-size: 2.6rem;
   }
 
   .patientDashBoard {
@@ -42,10 +43,12 @@
     }
 
     .dashboard {
-      width: calc(86% - 0.8rem);
+      width: calc(87% - 0.8rem);
       height: 100%;
       overflow-y: auto;
-      padding: 1rem;
+      padding: 1%;
+      background-image: url("src/assets/dashboardImage.jpg");
+      background-size: 100%;
     }
   }
 }

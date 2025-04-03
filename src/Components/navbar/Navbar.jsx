@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import NavbarModuleCss from "./Navbar.module.scss";
 import { useNavigate } from "react-router-dom";
+import Logo from "src/assets/Main_logo.png";
 
 const Navbar = ({ children }) => {
   const toNavigate = useNavigate();

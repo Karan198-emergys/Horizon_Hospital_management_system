@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./styles/styles.scss"; // Removed unnecessary "../src/"
 import LandingPage from "./Pages/LandingPage";
 import LoginScreen from "./Pages/LoginScreen";
 import RegistrationScreen from "./Pages/RegistrationScreen";
@@ -31,11 +30,11 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path:"/user",
+        path: "/user",
         element: <PatientDashBoard />,
         children: [{ path: "patientForm", element: <PatientForm /> }],
       },
-      { path: "profile", element: <ViewPatient /> },
+      { path: "viewPatient", element: <ViewPatient /> },
     ],
   },
   {
